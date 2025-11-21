@@ -1,93 +1,189 @@
-<!DOCTYPE html>
-<html>
-<!-- hi this is a COMMENT made by pressing Cmd+/ telling you humans to 
-IGNORE the head & SKIP to body -->
-    <head>
-        <title>Your Mid-Nineties Home Page</title>
-    <!-- OK you ignored ME and changed the meta title in the tab, congrats
-         but if you want to actually change the top heading title the user sees then
-         IGNORE the head & SKIP to body -->
-        <link rel="icon" href="media/favicon.ico" type="image/x-icon"> 
-        <base target="_blank"> <!-- only keep with footer script.js excluding internal links -->
-        <meta charset="utf-8">
-        <meta name="description" content="TODO Description. This profile-page is a homage to the earliest web designers who were working without CSS & JS which were only invented in 1994/5."/> <!-- recommend descriptions between 50–160 characters. More Meta description tips: https://www.coderseo.com/meta-description-generator -->
-        <!-- robots.txt file overrides 
-         <meta name="robots" content="noindex"> -->
 
-    <!-- EXTENSION: CSS. Uncomment v with Cmd-/ to style Dark Mode. Obv the comment shortcut is Ctrl-/ for Windows dweebs -->
-        <style>
-            /* body {background-color: black; color: white;} */
-        </style>
-        <!-- then move it into an External styles.css file and 
-        <link rel="stylesheet" href="styles.css"> -->
-    </head>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Darth Vader</title>
+  <link rel="icon" href="media/starwarslogo.png" type="image/x-icon">
+  <base target="_blank">
+  <meta name="description" content="TODO Description. This profile-page is a homage to the earliest web designers..." />
+  <link rel="stylesheet" href="default.css">
+</head>
+
+  <audio id="bg-audio" src="" loop preload="auto"></audio>
+
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const audio = document.getElementById('bg-audio');
+      audio.volume = 0.6;
+
+      
+      const playPromise = audio.play();
+      if (playPromise !== undefined) {
+        playPromise.catch(() => {
+          
+          Object.assign(btn.style, {
+            position: 'fixed',
+            left: '12px',
+            top: '12px',
+            zIndex: 9999,
+            padding: '8px 12px',
+            background: 'rgba(0,0,0,0.7)',
+            color: '#fff',
+            border: 'none',
+            borderRadius: '6px',
+            cursor: 'pointer'
+          });
+          btn.addEventListener('click', () => {
+            audio.play().then(() => btn.remove()).catch(()=>{});
+          });
+          document.body.appendChild(btn);
+        });
+      }
+      const photoBtn = document.createElement('button');
+      photoBtn.id = 'photo-library-btn';
+      photoBtn.textContent = 'Darth Vader Photo Library';
+      photoBtn.setAttribute('aria-label', 'Open Darth Vader photo library');
+      Object.assign(photoBtn.style, {
+        position: 'fixed',
+        right: '12px',
+        top: '12px',
+        zIndex: 9999,
+        padding: '8px 12px',
+        background: 'rgba(0,0,0,0.7)',
+        color: '#fff',
+        border: 'none',
+        borderRadius: '6px',
+        cursor: 'pointer'
+      });
+      photoBtn.addEventListener('click', () => {
+        window.location.href = 'darthvaderphotolibrary.html';
+      });
+      document.body.appendChild(photoBtn);
+    });
+  </script>
+
+<body>
+  
+
+
+  
+  <button id="menu-btn" aria-label="Open menu" aria-expanded="false" aria-controls="sidebar">
+    <span class="hamburger" aria-hidden="true"></span>
+  </button>
+
+  
+  <aside id="sidebar" class="sidebar" role="dialog" aria-hidden="true" aria-labelledby="sidebar-title">
+    <nav class="sidebar-nav">
+      <ul>
+    . 
+    .
+        <li><a href="index.html">Home</a></li>
+        <li><a href="darthvaderphotolibrary.html">Photo Library</a></li>
+        <li><a href="earlylife.html">Darth Vader's Early Life</a></li>
+        <li><a href="Video's.html">Darth Vader Info Videos</a></li>
+      </ul>
+    </nav>
+  </aside>
+  <div id="sidebar-overlay" class="sidebar-overlay" hidden></div>
+
+  <div class="container">
     
-    <!-- START edting content HERE -->
-    <body>
-        <h1>Ninety Five</h1>
-        <h2>Make a Website like the 90s. The <i>mid</i> 90s.</h2>
-        <img src="media/tamara95.png" height="150">
-        <hr>
-        <h2><em>I'm HTML! Right-click & View Page Source</em></h2>
-        <!-- HTML is a markup language, meaning it just enhances the text, so it's a really human-friendly language to learn to code in. You can learn to code by changing the body content of this website. -->
-        Select All & Copy-Paste, or Save Page As a new .html file you can edit!
-        It's the 'original template' for the web, before the dawn of CSS & JS. 
-        It's accessible & mobile-responsive by default, so you can't go too wrong (or too right, some would say).
-        <hr>
-        <h2>Bio Blurb</h2>
-        <p>If you wanted to be part of the invention of a lifetime, Silicon Valley in 1991 was the right place and right time. 
-            Given the gender skew in Stanford University's CompSci dept, Tamara Munzner might have been one of the first females to publish a personal website, 
-            but to this unassuming data visualiser who'd go on to a successful academic career in Silicon Valley and beyond, it was no big deal and "we just called them home pages", last modified in 1995 - 
-            when I was born, but CSS & JS weren't. 
-            So she told me during my Master's when she gave me her blessing to publish a homage under Creative Commons.  This licenses other young people to build on this template and get started exploring - without the complexity and ethical muddle of vibe-coding in modern frameworks - 
-            the possibilities of creating on the web by simply modifying code. </p>
-        <hr>
+  </div>
+
+  <script>
+    
+    document.addEventListener('DOMContentLoaded', () => {
+      const menuBtn = document.getElementById('menu-btn');
+      const sidebar = document.getElementById('sidebar');
+      const overlay = document.getElementById('sidebar-overlay');
+      const closeBtn = document.getElementById('sidebar-close');
+
+      function openSidebar() {
+        sidebar.classList.add('open');
+        overlay.hidden = false;
+        document.body.classList.add('sidebar-open');
+        menuBtn.setAttribute('aria-expanded', 'true');
+        sidebar.setAttribute('aria-hidden', 'false');
+        closeBtn.focus();
+      }
+      function closeSidebar() {
+        sidebar.classList.remove('open');
+        overlay.hidden = true;
+        document.body.classList.remove('sidebar-open');
+        menuBtn.setAttribute('aria-expanded', 'false');
+        sidebar.setAttribute('aria-hidden', 'true');
+        menuBtn.focus();
+      }
+
+      menuBtn.addEventListener('click', () => {
+        const opened = menuBtn.getAttribute('aria-expanded') === 'true';
+        opened ? closeSidebar() : openSidebar();
+      });
+      closeBtn.addEventListener('click', closeSidebar);
+      overlay.addEventListener('click', closeSidebar);
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && sidebar.classList.contains('open')) closeSidebar();
+      });
+    });
+  </script>
+
+ 
+
+
+  <div class="container">
+    <header class="site-header">
+      <h1>Darth Vader</h1>
+      <img class="hero" src="media/darth.jpg">
+    </header>
+
+    <main>
+      <hr>
+      <section>
+        <h2><em>Who is Darth Vader?</em></h2>
+        <p style="font-size: 20px">Darth Vader is a cybernetically enhanced Sith Lord, a supreme military commander for the Galactic Empire, and one of the most iconic villains in the Star Wars franchise, recognizable by his black armor, helmet, and distinctive mechanical breathing sound. Once a heroic Jedi Knight named Anakin Skywalker, he was corrupted by the dark side of the Force, suffering fatal injuries and undergoing a transformation into a ruthless, powerful figure who served the Emperor and relentlessly hunted the Rebel Alliance.</p>
+      </section>
+
+      <hr>
+      <section>
+        <h2><em>Darth Vader's Backstory</em></h2>
+        <p style="font-size: 20px">Before he became a disciple of the dark side, Darth Vader was Anakin Skywalker, a goodhearted Jedi and hero of the Clone Wars. While he was considered one of the most powerful Jedi in the galaxy, Anakin had broken the Order’s code by secretly marrying Senator Padmé Amidala. When he began to suffer visions that Padmé would die in childbirth, Anakin sought a way to prevent this fate. Supreme Chancellor Palpatine, a mentor to the young Jedi, claimed that the dark side was a pathway to this ability: he could stop people from dying with Sith power. At the same time, the Chancellor revealed that he himself was a Sith Lord, Darth Sidious, and would train Anakin. Confused and conflicted, Anakin ultimately succumbed to Sidious’ temptations. Rechristened as Darth Vader, he became an agent of evil.</p>
+        <img class="hero" src="media/darthvadermist.jpeg" alt="Darth Vader behind mist with his lightsaber">
+      </section>
+
+      <hr>
+      <section>
         <h2>Links</h2>
         <ul>
-            <li> <a href="https://code.visualstudio.com">VS Code</a>: download code-editor (or use TextEdit/Notepad)</li>
-            <li> <a href="https://www.freecodecamp.org/learn/full-stack-developer/workshop-cat-photo-app/step-1">freeCodeCamp</a>: learn HTML syntax with step-by-step walkthrough </li>
-            <li> <a href="https://github.com/w4rner/ninety-five">GitHub repo</a>: how this site is published </li>
-        </ul>
         
-        <hr>
-        <h2>Real Life</h2>
-        Onward to 
-        <ul>
-            <li> <a href="http://www.geom.uiuc.edu/~munzner/"> the 1st person</a> </li>
-            <li> <a href="/index.html">Mr Warner</a> </li>
-            <br>
-            and less real:
-            <li> <a href="https://bossificator1412.github.io/IndianaJonesWeb/website/">Prof Indiana Jones</a> </li>
-            <li> <a href="https://anast4ci1a.github.io/alice-in-wonderland/index.html">Alice in Wonderland</a> </li>
-            <li> <a href="https://amaatra.github.io/allaboutalphys/index.html">Alphys</a> & <a href="https://dipwr.github.io/sans/">Sans</a> from <i>Undertale</i> </li>
-            <li> <a href="https://cr33d4.github.io/mandalorian/index.html">The Mandalorian</a> </li>
-            <li> <a href="https://j0-l1e.github.io/BareumJeongFanpage/">Bareum Jeong</a> </li>
+          <li><a href="https://www.starwars.com/databank/darth-vader">Darth Vader Info</a>
+         
         </ul>
-        Want to publish yours?
-        <ol type="a">
-            <li><b>Fork the GitHub repo to Copy site</b></li>
-            <li><b>Code & Push changes</b></li>
-            <li><b>Publish free with GitHub (or Cloudflare) Pages</b></li>
-        </ol>
-        Other teachers should contact me with any top examples that deserve to be linked!
-        <hr>
-        <a href="https://github.com/w4rner/ninety-five"><img src="https://w4.rner.me/index_files/github.png" height="50" alt="GitHub logo from httpsgetdrawings.com/pixelated-icon"></a><hr>
-        <br>
-        <small> 
-        Last modified: Thu Jan 2 3:11:00 pm 2025
-            <p xmlns:cc="http://creativecommons.org/ns#" xmlns:dct="http://purl.org/dc/terms/">
-                <a property="dct:title" rel="cc:attributionURL" href="/">this website</a> 
-                &copy; 2025 was remixed from the 
-                <a href="http://w4.rner.me/ninety-five.html">'Ninety Five' template</a> 
-                and is also licensed under <a href="http://creativecommons.org/licenses/by-sa/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer" style="display:inline-block;">CC BY-SA 4.0<img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1"><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1"><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/sa.svg?ref=chooser-v1"></a></p>
-            <i> "Nanos Gigantum Humeris Insidentes" </i>
-        </small>
+      </section>
 
-    <!-- EXTENSION: JS. Try uncommenting v for an alert box -->
-        <script>
-            // alert("you're going back to mid-nineties!");
-        </script> 
-    <!--  You could add a src="" attribute to a script tag for external scripts like Website Carbon badge, Simple Analytics or your own script.js file-->
-    
-    </body>
+      <hr>
+      <section>
+        <h3></h3>
+        <ol type="a">
+       
+        </ol>
+      </section>
+    </main>
+
+    <footer>
+      
+      <small>
+        Last modified: 21/11/25<br>
+        <a href="/" rel="cc:attributionURL">this website</a> &copy; 2025 was remixed from the <a href="http://w4.rner.me/ninety-five.html">"Ninety Five" template</a> and is licensed under <a href="http://creativecommons.org/licenses/by-sa/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer">CC BY-SA 4.0</a>
+        <div class="credit-quote"><i>"Nanos Gigantum Humeris Insidentes"</i></div>
+      </small>
+    </footer>
+  </div>
+
+  <script>
+    // alert("you're going back to mid-nineties!");
+  </script>
+</body>
 </html>

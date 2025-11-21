@@ -1,0 +1,150 @@
+
+
+:root{
+  --max-width: 980px;
+  --page-pad: 24px;
+  --muted: rgba(255,255,255,0.75);
+  --brand: #fff;
+}
+img {
+  border-radius: 3%;
+}
+
+* {box-sizing: var(--max-width);}
+
+html,body{
+  height:100%;
+  margin:0;
+  background: url("media/background.jpg") no-repeat center / cover fixed;
+  font-family: "BBH Sans Hegarty", Helvetica, Arial, sans-serif;
+  color:#ffffff; 
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+}
+
+.container{
+  max-width:var(--max-width);
+  margin:32px auto;
+  padding:28px;
+  background: url("media/background.jpg") no-repeat center / cover fixed; ;
+  border-radius:10px;
+  box-shadow: 0 8px 30px rgba(18,24,31,0.06);
+}
+
+.site-header{ text-align:center; margin-bottom:16px; }
+.site-header h1{ margin:0 0 8px; font-size:2.1rem; letter-spacing:0.5px; color:var(--brand); }
+.hero{ width:100%; max-height:360px; object-fit:cover; border-radius:8px; display:block; margin:0 auto; }
+
+main{ line-height:1.6; color: #fff; }
+
+h2{ font-size:1.15rem; margin:1rem 0 0.5rem; color:#fff; }
+h3{ margin-top:0.6rem; }
+
+p{ margin:0.5rem 0 1rem; }
+
+.side-image{ width:100%; max-width:360px; height:auto; display:block; margin:12px 0; border-radius:6px; }
+
+hr{ border:0; border-top:1px solid #e9ebee; margin:18px 0; }
+
+ul{ padding-left:1.1rem; }
+a{ color:#0366d6; text-decoration:none; }
+a:hover{ text-decoration:underline; }
+
+footer{ text-align:center; margin-top:18px; color:var(--muted); }
+footer img{ vertical-align:middle; }
+
+small{ color:var(--muted); font-size:0.9rem; }
+
+
+@media (min-width:900px){
+  .side-image{ float:right; margin-left:18px; max-width:320px; }
+  main::after{ content:""; display:block; clear:both; }
+}
+
+
+a:focus, button:focus { outline:3px solid #b3d4ff; outline-offset:2px; }
+/* ...existing code... */
+
+/* Menu button (top-left) */
+#menu-btn{
+  position: fixed;
+  top: 12px;
+  left: 12px;
+  z-index: 10010;
+  width: 44px;
+  height: 44px;
+  padding: 6px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0,0,0,0.6);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+#menu-btn .hamburger{
+  display: block;
+  width: 20px;
+  height: 2px;
+  background: #fff;
+  position: relative;
+}
+#menu-btn .hamburger::before,
+#menu-btn .hamburger::after{
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: #fff;
+}
+#menu-btn .hamburger::before{ top: -6px; }
+#menu-btn .hamburger::after{ top: 6px; }
+
+/* Sidebar (no slide animation — simply hidden/shown) */
+.sidebar{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 320px;
+  height: 100%;
+  background: rgba(8,10,12,0.96);
+  color: #fff;
+  padding: 20px;
+  z-index: 10005;
+  box-shadow: 12px 0 24px rgba(0,0,0,0.5);
+  overflow-y: auto;
+  display: none; /* hidden by default */
+}
+.sidebar.open{ display: block; }
+.sidebar .close-btn{
+  background: transparent;
+  color: #fff;
+  border: none;
+  font-size: 28px;
+  line-height: 1;
+  cursor: pointer;
+  position: absolute;
+  top: 8px;
+  right: 12px;
+}
+.sidebar-nav{ margin-top: 36px; }
+.sidebar-nav ul{ list-style: none; padding: 0; margin: 0; }
+.sidebar-nav li{ margin: 12px 0; }
+.sidebar-nav a{ color: #fff; text-decoration: none; }
+
+/* Overlay to dim page */
+.sidebar-overlay{
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.45);
+  z-index: 10000;
+}
+
+/* prevent page scroll when sidebar open */
+body.sidebar-open{
+  overflow: hidden;
+}
+
+/* ...existing code... */
